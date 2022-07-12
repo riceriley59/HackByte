@@ -1,6 +1,8 @@
 const intro = document.querySelector('.intro');
 const logo = document.querySelector('.logo-header');
 const logoSpan = document.querySelectorAll('.logo');
+const transitionel = document.getElementById('transition');
+const anchors = document.querySelectorAll('a');
 
 window.addEventListener('DOMContentLoaded', ()=>{
     setTimeout(()=>{
@@ -23,4 +25,22 @@ window.addEventListener('DOMContentLoaded', ()=>{
             intro.style.top = '-100vh';
         }, 2300);
     });
+
+    setTimeout(()=>{
+        transitionel.classList.remove('is-active');
+    }, 500);
+
+    for(let i = 0; i < anchors.length; i++){
+        const anchor = anchors[i];
+        anchor.addEventListener('click', e =>{
+            e.preventDefault();
+            let target = e.target.href;
+
+            transitionel.classList.add('is-active');
+
+            setTimeout(()=>{
+                window.location.href = target;
+            }, 500);
+        })
+    }
 });
