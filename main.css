@@ -171,6 +171,7 @@ body{
   background: #3b4252;
   transform-origin: bottom;
   transform: skewX(45deg);
+  transition: 0.5s;
 }
 
 .loaderleft span:hover::after{
@@ -243,6 +244,7 @@ body{
   background: #3b4252;
   transform-origin: bottom;
   transform: skewX(45deg);
+  transition: 0.5s;
 }
 
 .loaderright span:hover::after{
@@ -322,4 +324,56 @@ header .int span i::after{
   bottom: 150px;
   opacity: 0;
   transition: ease-in-out 0.5s;
+}
+
+@media screen and (max-device-width: 640px) {
+  .splash{
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  .loaderleft span{
+    display: none;
+  }
+  .loaderright{
+    margin-top: 100px;
+  }
+  .loaderright span{
+    width: 30vw;
+  }
+}
+
+/* For Tablet View */
+@media screen and (min-device-width: 768px)
+	and (max-device-width: 1024px) {
+    .splash ul{
+      margin-right: 100px;
+      margin-left: 100px;
+    }
+}
+
+/* Laptop ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .loaderleft span{
+      width: 10vw;
+    }
+    .loaderright span{
+      width: 10vw;
+    }
+}
+
+/* Laptop ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+    .loaderright span{
+      width: 10vw;
+    }
+    .loaderleft span{
+      width: 10vw;
+    }
 }
