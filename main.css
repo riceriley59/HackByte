@@ -326,9 +326,11 @@ header .int span i::after{
   transition: ease-in-out 0.5s;
 }
 
+/* For Mobile Devices*/
 @media screen and (max-device-width: 640px) {
   .splash{
     flex-direction: column;
+    overflow: hidden;
     overflow-x: hidden;
   }
   .loaderleft span{
@@ -338,7 +340,7 @@ header .int span i::after{
     margin-top: 100px;
   }
   .loaderright span{
-    width: 30vw;
+    display: None;
   }
 }
 
@@ -348,6 +350,13 @@ header .int span i::after{
     .splash ul{
       margin-right: 100px;
       margin-left: 100px;
+      top: 20vh;
+    }
+    .loaderleft{
+      top: 30vh;
+    }
+    .loaderright{
+      top: 30vh;
     }
 }
 
