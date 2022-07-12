@@ -25,7 +25,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
             intro.style.top = '-100vh';
         }, 2300);
     });
+});
 
+window.addEventListener('load', ()=>{
     setTimeout(()=>{
         transitionel.classList.remove('is-active');
     }, 500);
@@ -43,4 +45,4 @@ window.addEventListener('DOMContentLoaded', ()=>{
             }, 500);
         })
     }
-});
+})
