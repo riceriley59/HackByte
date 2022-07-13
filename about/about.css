@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+  
+body{
+    background-color: #2e3440;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#showcase{
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+}
+  
+#showcase .int{
+    position: absolute;
+    left: 10%;
+    bottom: 1rem;
+    font-size: 1.6rem;
+    color: #d8dee9;
+}
+  
+#showcase .int span{
+    color: #81a1c1;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}
+  
+#showcase .int span i{
+    font-style: normal;
+    color: #d8dee9;
+}
+  
+#showcase .int span i::after{
+    content: 'l';
+    color: #808080;
+    text-transform: lowercase;
+}
+
+#showcase{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 8vh;
+	padding: 30px 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: 0.6s ease-in;
+}
+
+#showcase .logo{
+	opacity: 0;
+}
+
+#showcase .logo.active{
+	opacity: 1;
+	transition: ease-in-out 0.5s;
+}
+
+#showcase .showcaselist{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 1s ease-in;
+    margin-left: 65%;
+    margin-top: 10px;
+}
+
+#showcase .showcaselist li{
+	position: relative;
+	list-style: none;
+	margin-left: 20px;
+}
+
+#showcase .showcaselist.active{
+	opacity: 1;
+}
+
+#showcase ul li a{
+	position: relative;
+	text-decoration: none;
+	padding: 6px 15px;
+	color: #fff;	
+	border-radius: 20px;
+	transition: all 0.25s ease-in;
+}
+
+#showcase ul li a:hover, #showcase .select1.active, #showcase .select2.active, #showcase .select3.active,
+#showcase .select4.active{
+	background: #fff;
+	color: #7597de;
+}

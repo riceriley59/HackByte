@@ -27,6 +27,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     });
 });
 
+const nav = document.querySelector('showcaselist');
+
 window.addEventListener('load', ()=>{
     setTimeout(()=>{
         transitionel.classList.remove('is-active');
