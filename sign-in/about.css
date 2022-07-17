@@ -75,7 +75,7 @@ body{
 	align-items: center;
 	opacity: 1;
 	transition: opacity 1s ease-in;
-    margin-left: 55%;
+    margin-left: 65%;
     margin-top: 10px;
 }
 
@@ -102,9 +102,4 @@ body{
 #showcase .select4.active{
 	background: #fff;
 	color: #7597de;
-}
-
-#showcase .select7.active, #showcase .select6.active{
-	color: #fff;
-	background: #8fbcbb;
 }
