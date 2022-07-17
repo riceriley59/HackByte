@@ -45,4 +45,4 @@ window.addEventListener('load', ()=>{
             }, 500);
         })
     }
-})
+});
