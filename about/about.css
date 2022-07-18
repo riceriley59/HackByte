@@ -237,13 +237,8 @@ body{
   and (min-device-width: 1200px) 
   and (max-device-width: 1600px) 
   and (-webkit-min-device-pixel-ratio: 1) {
-	#work .blog-box{
-		height: 40%;
-	}
-
-	#work .blog-box .language{
-		width: 70px;
-		padding-left: 10px;
+	.about{
+		margin-left: 2%;
 	}
 }
 
