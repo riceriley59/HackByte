@@ -72,22 +72,94 @@ function init(){
     loader.load('../model/scene.gltf', function(gltf){
         scene.add(gltf.scene);
         house = gltf.scene.children[0];
+        house.rotation.z = 5;
+        house.rotation.x = 5;
+        house.rotation.y = -0.05;
         animate();
+    });
+
+    var handler = function (element, type, func) {
+		if (element.addEventListener) {
+			element.addEventListener(type, func, false);
+		} else if (window.attachEvent) {
+			element.attachEvent("on" + type, func);
+		} else {
+			element["on" + type] = func;
+		}
+	};
+
+    var windowSize = function (withScrollBar) {
+		var wid = 0;
+		var hei = 0;
+		if (typeof window.innerWidth != "undefined") {
+			wid = window.innerWidth;
+			hei = window.innerHeight;
+		}
+		else {
+			if (document.documentElement.clientWidth == 0) {
+				wid = document.body.clientWidth;
+				hei = document.body.clientHeight;
+			}
+			else {
+				wid = document.documentElement.clientWidth;
+				hei = document.documentElement.clientHeight;
+			}
+		}
+		return { width: wid - (withScrollBar ? (wid - document.body.offsetWidth + 1) : 0), height: hei };
+	};
+
+    var size = windowSize(true);
+
+	// NOTE: this function will set the camera to follow the box
+	handler(container, "mousemove", function (event) {
+		var offX = 0;
+		var offY = 0;
+		if (typeof window.pageXOffset != "undefined") {
+			offX = window.pageXOffset;
+			offY = window.pageYOffset;
+		}
+		else {
+			if (document.documentElement.scrollTop == 0) {
+				offX = document.body.scrollLeft;
+				offY = document.body.scrollTop;
+			}
+			else {
+				offX = document.documentElement.scrollLeft;
+				offY = document.documentElement.scrollTop;
+			}
+		}
+		var x, y;
+		if (typeof event.pageX != "undefined") {
+			x = event.pageX;
+			y = event.pageY;
+		}
+		else {
+			x = event.clientX;
+			y = event.clientY;
+		}
+		x -= offX;
+		y -= offY;
+
+		if (x < 0) {
+			x = 0;
+		}
+		if (y < 0) {
+			y = 0;
+		}
+
+        house.rotation.z = 5;
+        house.rotation.x = 5;
+        house.rotation.y = -0.05;
+
+		house.rotation.x += (y - size.height / 2) * 0.00025;
+
+		house.rotation.z += (x - size.width / 2) * 0.00025;
     });
 }
 
 function animate(){
     requestAnimationFrame(animate);
-    house.rotation.z = 5;
-    house.rotation.x = 5;
-    house.rotation.y = -0.05;
     renderer.render(scene, camera);
 }
 
 init();
-
-window.addEventListener('DOMContentLoaded', ()=>{
-    setTimeout(()=>{
-        container.classList.add('active');
-    }, 1000);
-})
