@@ -11,11 +11,31 @@ body{
     overflow: hidden;
 }
 
+.about .intro{
+	color: #7597de;;
+}
+
+.about p{
+	color: #fff;
+}
+
+.about h2{
+	font-size: 3.5em;
+	margin-bottom: 10px;
+	color: #fff;
+}
+
 .scene, canvas{
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	float: right;
+	opacity: 1;
+	transition: 1s ease-in;
+}
+
+.scene.active{
+	opacity: 1;
 }
 
 #showcase{
@@ -135,7 +155,7 @@ body{
 .about{
 	z-index: 100;
 	margin-top: 13%;
-	margin-left: 25%;
+	margin-left: 15%;
 }
 
 /* For Tablet View */
@@ -147,12 +167,14 @@ body{
 			height: 94vh;
 			top: 8vh;
 			background-color: #2e3440;
-			display: flex;
 			flex-direction: column;
 			align-items: center;
 			width: 100%;
 			transform: translateX(100%);
-			transition: transform 0.5s ease-in;
+			transition: transform 0.5s ease-in, opacity 0.5s ease-in, display 0.5s ease-in;
+			z-index: 10000;
+			opacity: 0;
+			display: none;
 		}
 	
 		#showcase .showcaselist li{
@@ -162,11 +184,17 @@ body{
 	
 		#showcase .showcaselist.nav-active{
 			transform: translateX(0%);
+			opacity: 1;
+			display: flex;
 		}
 	
 		#showcase .burger{
 			display: block;
 			cursor: pointer;
+		}
+
+		.about{
+			margin-left: 10%; 
 		}
 }
    
@@ -178,12 +206,14 @@ body{
 		height: 94vh;
 		top: 8vh;
 		background-color: #2e3440;
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
 		transform: translateX(100%);
-		transition: transform 0.5s ease-in;
+		transition: transform 0.5s ease-in, opacity 0.5s ease-in, display 0.5s ease-in;
+		z-index: 10000;
+		opacity: 0;
+		display: none;
 	}
 
 	#showcase .showcaselist li{
@@ -193,6 +223,8 @@ body{
 
 	#showcase .showcaselist.nav-active{
 		transform: translateX(0%);
+		opacity: 1;
+		display: flex;
 	}
 
 	#showcase .burger{

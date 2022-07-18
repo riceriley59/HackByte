@@ -128,7 +128,7 @@ body{
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-top: 40vh;
+	margin-top: 35vh;
 }
 
 .left{
@@ -427,14 +427,15 @@ body{
 	}
 
 	.left{
-		margin-top: 42px;
-		margin-bottom: 150px;
-	}
-	.right{
 		display: none;
 	}
+	.right{
+		margin-top: 150px;
+		margin-bottom: 100px;
+		margin-right: 70px;
+	}
 	.iso{
-		margin-bottom: 150px;
+		margin-top: 50px;
 	}
 }
 

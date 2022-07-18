@@ -30,9 +30,9 @@ let renderer;
 let scene;
 let house;
 
-function init(){
-    container = document.querySelector('.scene');
+container = document.querySelector('.scene');
 
+function init(){
     scene = new THREE.Scene();
 
     const fov = 35;
@@ -41,7 +41,19 @@ function init(){
     const far = 500;
 
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(-30, 10, 100);
+    setInterval(()=>{
+        if(window.innerWidth > 1024){
+            camera.position.set(-30, 8, 100);
+        }
+        else if(window.innerWidth > 768 && window.innerWidth < 1024){
+            camera.position.set(0, 20, 100);
+        }
+        else if(window.innerWidth < 640){
+            camera.position.set(0, 40, 200);
+        }
+
+        animate();
+    }, 500);
 
     const ambient = new THREE.AmbientLight(0x404040, 3);
     scene.add(ambient);
@@ -76,6 +88,6 @@ init();
 
 window.addEventListener('DOMContentLoaded', ()=>{
     setTimeout(()=>{
-        
-    }, 2000);
+        container.classList.add('active');
+    }, 1000);
 })
