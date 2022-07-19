@@ -300,12 +300,14 @@ figure:hover figcaption{
 			height: 94vh;
 			top: 8vh;
 			background-color: #2e3440;
-			display: flex;
 			flex-direction: column;
 			align-items: center;
 			width: 100%;
 			transform: translateX(100%);
-			transition: transform 0.5s ease-in;
+			transition: transform 0.5s ease-in, opacity 0.5s ease-in, display 0.5s ease-in;
+			z-index: 10000;
+			opacity: 0;
+			display: none;
 		}
 	
 		#showcase .showcaselist li{
@@ -315,6 +317,8 @@ figure:hover figcaption{
 	
 		#showcase .showcaselist.nav-active{
 			transform: translateX(0%);
+			opacity: 1;
+			display: flex;
 		}
 	
 		#showcase .burger{
@@ -331,12 +335,14 @@ figure:hover figcaption{
 		height: 94vh;
 		top: 8vh;
 		background-color: #2e3440;
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
 		transform: translateX(100%);
-		transition: transform 0.5s ease-in;
+		transition: transform 0.5s ease-in, opacity 0.5s ease-in, display 0.5s ease-in;
+		z-index: 10000;
+		opacity: 0;
+		display: none;
 	}
 
 	#showcase .showcaselist li{
@@ -346,6 +352,8 @@ figure:hover figcaption{
 
 	#showcase .showcaselist.nav-active{
 		transform: translateX(0%);
+		opacity: 1;
+		display: flex;
 	}
 
 	#showcase .burger{
