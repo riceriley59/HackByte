@@ -360,6 +360,14 @@ figure:hover figcaption{
 		display: block;
 		cursor: pointer;
 	}
+
+	.portfolio-nav ul li{
+		margin-top: 50px;
+	}
+
+	.portfolio-nav span{
+		padding: 5px 0;
+	}
 }
 
 /* Laptop ----------- Non-Retina Screens ----------- */
