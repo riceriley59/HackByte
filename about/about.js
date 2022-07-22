@@ -62,7 +62,13 @@ function init(){
     light.position.set(10,10,10);
     scene.add(light);
 
-    renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+	let pixelRatio = window.devicePixelRatio
+	let AA = true
+	if (pixelRatio > 1) {
+  		AA = false
+	}
+
+    renderer = new THREE.WebGLRenderer({antialias:AA, alpha:true, powerPreference: 'high-performance'});
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
