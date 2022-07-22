@@ -57,6 +57,7 @@ body{
 	position: relative;
 	list-style: none;
 	margin-left: 20px;
+	margin-top: 18px;
 }
 
 #showcase .showcaselist.active{
