@@ -74,6 +74,15 @@ body{
 	transition: all 0.25s ease-in;
 }
 
+#showcase ul li div{
+	position: relative;
+	text-decoration: none;
+	padding: 6px 0px;
+	color: #fff;	
+	border-radius: 20px;
+	transition: all 0.25s ease-in;
+}
+
 #showcase ul li a:hover, #showcase .select1.active, #showcase .select2.active, #showcase .select3.active,
 #showcase .select4.active{
 	background: #fff;
