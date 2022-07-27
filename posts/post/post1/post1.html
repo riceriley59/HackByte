@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="post1.css">
+    <link href="../../../transitions.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="transition" class="transition transition-3 is-active"></div>
+    <header id="showcase">
+			<div class="int">
+        <span><i>Hack Byte</i>Tech Blog</span>
+      </div>
+			<ul class="showcaselist">
+				<li><a href="../index.html" class="select1">Home</a></li>
+        <li><a class="select2 active" href="posts.html">Posts</a></li>
+				<li><a class="select3" href="../about/about.html">About</a></li>
+				<li><a class="select4" href="../contact/contact.html">Contact</a></li>
+				<li><a class="select5" href="https://delicate-marshmallow-bca2bd.netlify.app/">Portfolio</a></li>
+        <li><div class="select6 active" data-netlify-identity-button></div></li>
+        </ul>
+      <div class="burger">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+			</div>
+		</header>
+
+    <script>
+        const GH_API_URL = 'https://api.github.com/repos/riceriley59/HackByte/issues/3/comments';
+    
+        let request = new XMLHttpRequest();
+        request.open( 'GET', GH_API_URL, true );
+        request.onload = function() {
+            if ( this.status >= 200 && this.status < 400 ) {
+                let response = JSON.parse( this.response );
+        
+                for ( var i = 0; i < response.length; i++ ) {
+                    document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
+                }
+        
+                if ( 0 === response.length ) {
+                    document.getElementById( 'no-comments-found' ).style.display = 'block';
+                }
+            } else {
+                console.error( this );
+            }
+        };
+        
+        function createCommentEl( response ) {
+            let user = document.createElement( 'a' );
+            user.setAttribute( 'href', response.user.url.replace( 'api.github.com/users', 'github.com' ) );
+            user.classList.add( 'user' );
+        
+            let userAvatar = document.createElement( 'img' );
+            userAvatar.classList.add( 'avatar' );
+            userAvatar.setAttribute( 'src', response.user.avatar_url );
+        
+            user.appendChild( userAvatar );
+        
+            let commentLink = document.createElement( 'a' );
+            commentLink.setAttribute( 'href', response.html_url );
+            commentLink.classList.add( 'comment-url' );
+            commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+        
+            let commentContents = document.createElement( 'div' );
+            commentContents.classList.add( 'comment-content' );
+            commentContents.innerHTML = response.body;
+        
+            let comment = document.createElement( 'li' );
+            comment.setAttribute( 'data-created', response.created_at );
+            comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
+            comment.setAttribute( 'data-user-url', response.user.url );
+        
+            comment.appendChild( user );
+            comment.appendChild( commentContents );
+            comment.appendChild( commentLink );
+        
+            return comment;
+        }
+        request.send();
+    </script>
+
+    <div class="github-comments">
+        <p id="leave-a-comment">Comments</p>
+        <ul id="gh-comments-list"></ul>
+        <p id="no-comments-found">No comments found for this article.</p>
+        <p id="leave-a-comment">Join the discussion for this article by commenting in <a href="https://github.com/riceriley59/HackByte/issues/3" >this ticket</a>. Comments appear on this page instantly.</p>
+    </div> 
+
+    <script src="post1.js"></script>
+    <script src="../../../app.js"></script>
+</body>
+</html>
