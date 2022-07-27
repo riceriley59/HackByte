@@ -1,8 +1,8 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+  	font-family: 'Poppins', sans-serif;
 }
   
 body{
@@ -127,4 +127,109 @@ body{
 
 .toggle .line3{
 	transform: rotate(45deg) translate(-4px, -5px);
+}
+
+article{
+	display: flex;
+	flex-direction: column;
+	font-size: 18px;
+	width: 50em;
+	margin: 0 auto;
+	max-width: 100%;
+	line-height: 1.5;
+	color: #d8dee9;
+	margin-top: 100px;
+}
+
+article h1{
+	font-size: 2em;
+	font-weight: 700;
+	color: #81a1c1;
+	margin-left: 25%;
+}
+
+.github-comments{
+	font-size: 18px;
+	width: 45em;
+	margin: 50px auto;
+	max-width: 100%;
+	line-height: 1.5;
+}
+
+#gh-comments-list {
+	list-style: none;
+	list-style-type: none;
+}
+#gh-comments-list li {
+	margin: 0;
+	padding: 1.5em 0;
+	display: flex;
+	flex-wrap: wrap;
+	border-top: 1px solid #808080;
+}
+#gh-comments-list li >
+a.user {
+	width: 2.5em;
+	height: 2.5em;
+	overflow: hidden;
+	padding: 3px;
+}
+#gh-comments-list li >
+a.user img {
+	border-radius: 50%;
+	width: 35px;
+}
+#gh-comments-list li >
+a.comment-url {
+	width: 100%;
+	text-align: right;
+	font-size: 0.6em;
+	opacity: 0.5;
+	text-decoration: none;
+	color: #d8dee9;
+}
+#gh-comments-list li >
+a.comment-url:hover {
+	opacity: 1;
+	color: #81a1c1;
+}
+#gh-comments-list li .comment-content {
+	padding: 0 1.5em;
+	color: #d8dee9;
+}
+#leave-a-comment {
+	background: #2e3440;
+	color: #81a1c1;
+	padding: 1rem;
+	text-align: center;
+}
+#leave-a-comment {
+	color: #d8dee9;
+	border-bottom-color: #d8dee9;
+	outline-color: #d8dee9;
+	text-align: center;
+}
+
+#leave-a-comment button{
+	border: none;
+	padding: 12px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	color: #d8dee9;
+	background-color: #81a1c1;
+	border-radius: 8px;
+  }
+  
+#leave-a-comment button:hover{
+	color: #81a1c1;
+	background-color: #d8dee9;
+	transition: 0.2s ease-in-out;
+	cursor: pointer;
+  }
+
+#no-comments-found {
+	font-size: 0.8rem;
+	display: none;
 }
