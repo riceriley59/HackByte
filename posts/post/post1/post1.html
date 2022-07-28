@@ -15,23 +15,23 @@
 <body>
 
     <div id="transition" class="transition transition-2 is-active"></div>
-    <header id="showcase">
-			<div class="int">
-        <span><i>Hack Byte</i>Tech Blog</span>
-      </div>
-			<ul class="showcaselist">
-				<li><a href="../../../index.html" class="select1">Home</a></li>
-                <li><a class="select2 active" href="../../posts.html">Posts</a></li>
-				<li><a class="select3" href="../../../about/about.html">About</a></li>
-				<li><a class="select4" href="../../../contact/contact.html">Contact</a></li>
-				<li><a class="select5" href="https://delicate-marshmallow-bca2bd.netlify.app/">Portfolio</a></li>
+    <header id="showcase" class="">
+		<div class="int">
+            <span><i>Hack Byte</i>Tech Blog</span>
+        </div>
+        <ul id='showcaselist' class="showcaselist">
+            <li><a href="../../../index.html" class="select1">Home</a></li>
+            <li><a class="select2 active" href="../../posts.html">Posts</a></li>
+            <li><a class="select3" href="../../../about/about.html">About</a></li>
+            <li><a class="select4" href="../../../contact/contact.html">Contact</a></li>
+            <li><a class="select5" href="https://delicate-marshmallow-bca2bd.netlify.app/">Portfolio</a></li>
         </ul>
-      <div class="burger">
-				<div class="line1"></div>
-				<div class="line2"></div>
-				<div class="line3"></div>
-			</div>
-		</header>
+        <div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
+		</div>
+	</header>
 
     <script>
         const GH_API_URL = 'https://api.github.com/repos/riceriley59/HackByte/issues/3/comments';
@@ -88,8 +88,8 @@
         request.send();
     </script>
     <article>
-        <h1>Title of my article</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque viverra mauris.
+        <h1>Serverless Netlify Functions (with static html templates)</h1>
+        <p><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque viverra mauris.
             Netus et malesuada fames ac turpis egestas sed tempus. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Laoreet suspendisse interdum consectetur libero id faucibus. 
             Id donec ultrices tincidunt arcu non sodales neque. Consectetur lorem donec massa sapien faucibus et molestie ac feugiat. Egestas congue quisque egestas diam. Pellentesque massa placerat
             duis ultricies lacus sed. Natoque penatibus et magnis dis parturient montes nascetur ridiculus. Sodales neque sodales ut etiam sit amet. Magna eget est lorem ipsum dolor. Vitae sapien pellentesque
@@ -185,6 +185,7 @@
             Also you will need a Github account to comment.<br><br><button onclick="window.location.href='https://github.com/riceriley59/HackByte/issues/3';">Leave a comment</button></p>
     </div> 
 
+    <div class="trademark"><p>Riley Rice - 2022</p></div>
     <script src="post1.js"></script>
     <script src="../../../app.js"></script>
     <script src="../../prism.js"></script>

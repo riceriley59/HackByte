@@ -106,6 +106,20 @@ body{
 	transition: transform 0.3s ease;
 }
 
+.trademark {
+    font-size: 12px;
+	width: 45em;
+	margin: 180px auto;
+	max-width: 100%;
+	line-height: 1.5;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.trademark p{
+    color: #d8dee9;
+}
 
 @keyframes navLinkFade{
 	from{

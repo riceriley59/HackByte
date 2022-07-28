@@ -328,6 +328,22 @@ header .int span i::after{
   transition: ease-in-out 0.5s;
 }
 
+.trademark {
+  font-size: 12px;
+  width: 45em;
+  margin: 100px auto;
+  max-width: 100%;
+  line-height: 1.5;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  transform: skewY(-15deg);
+}
+
+.trademark p{
+  color: #d8dee9;
+}
+
 /* For Mobile Devices*/
 @media screen and (max-device-width: 640px) {
   .splash{
