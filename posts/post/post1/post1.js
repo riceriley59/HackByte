@@ -12,10 +12,10 @@ burger.addEventListener('click', ()=>{
 
     burger.classList.toggle('toggle');
 
-    if(window.scrollY < 1000 && window.innerWidth > 768 && window.innerWidth < 1024){
+    if(window.scrollY < 20 && window.innerWidth > 768 && window.innerWidth < 1024){
         header.classList.toggle("sticky");
     }
-    else if(window.scrollY < 700 && window.innerWidth < 640){
+    else if(window.scrollY < 20 && window.innerWidth < 640){
         header.classList.toggle("sticky");
     }
 });
@@ -32,15 +32,15 @@ window.addEventListener('scroll', ()=>{
 
 	//sticky and responsive nav-bar
 	if(window.innerWidth > 1600){
-		header.classList.toggle("sticky", value > 900);
+		header.classList.toggle("sticky", value > 10);
 	}
 	else if(window.innerWidth > 1200 && window.innerWidth < 1600){
-		header.classList.toggle("sticky", value > 100);
+		header.classList.toggle("sticky", value > 40);
 	}
 	else if(window.innerWidth > 768 && window.innerWidth < 1024){
-		header.classList.toggle("sticky", value > 1000);
+		header.classList.toggle("sticky", value > 20);
 	}
 	if(window.innerWidth < 640){
-		header.classList.toggle("sticky", value > 700);
+		header.classList.toggle("sticky", value > 20);
 	}
 });
