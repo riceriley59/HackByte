@@ -32,7 +32,7 @@ window.addEventListener('scroll', ()=>{
 
 	//sticky and responsive nav-bar
 	if(window.innerWidth > 1600){
-		header.classList.toggle("sticky", value > 50);
+		header.classList.toggle("sticky", value > 10);
 	}
 	else if(window.innerWidth > 1200 && window.innerWidth < 1600){
 		header.classList.toggle("sticky", value > 40);
