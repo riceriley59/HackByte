@@ -49,7 +49,7 @@ function init(){
             camera.position.set(0, 20, 100);
         }
         else if(window.innerWidth < 640){
-            camera.position.set(0, 40, 200);
+            camera.position.set(0, 50, 300);
         }
 
         animate();
