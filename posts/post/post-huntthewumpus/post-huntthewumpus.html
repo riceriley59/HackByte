@@ -137,8 +137,117 @@
 
         <p><br>
             Additionally, this will also make adding events to rooms a lot easier. When implementing the grid I created a 2D vector of room objects which has different variables and methods to make the implementation easier.
-            Within each of these room objects I added an empty event pointer to each one. <br>
+            Within each of these room objects I added an empty event pointer, which allows us to use polymorphism. When putting each event in a room I would choose random coordinates and make sure that either the player 
+            wasn't in that room and the event pointer in that room was set to null, which means theres no event in there, and if it wasn't then I would choose a new position and check again. When I found a valid position for
+            an event I would then create a new derived event object on the heap and point that event pointer to the memory address of that object.<br><br>
+
+            Now we have a bunch of different events in different rooms with there own implementation of the correct functions, but for my debug mode I need to be able to display a character so that I could tell what type of event
+            the object was without walking into it or being anywhere near it, and I implemented this using inheritance. Since each derived event inherited the event class I added a char const name attribute to the event class, as you can 
+            see above, and made it so that it could only be set in the constructor, which means it would never change. I then made it so that whenever a derived event was constructed, since the event class is an abstract class it can't be 
+            constructed by itself, it would call the event constructor with it's specific name for the event. For example Bats are 'B', Gold is 'G', and the Wumpus is 'W' and so on. Heres what the constructors looked like:
+
         <br><br></p>
+           
+        <pre>
+            <button id="toolbar" onclick="copyToClickBoard()">Copy</button>
+            <br>
+            <code id="copy" class="language-cpp">
+                /*********************************************************************
+                ** Function: Event::Event()
+                ** Description: This is the defualt constructor for the Event class
+                ** Parameters: NONE
+                ** Pre-Conditions: no Event object
+                ** Post-Conditions: Event object with a name of ' '
+                *********************************************************************/
+                Event::Event() : name(' ') {}
+
+                /*********************************************************************
+                ** Function: Event::Event()
+                ** Description: This is the paramaterized constructor for the Event
+                class
+                ** Parameters: char name
+                ** Pre-Conditions: no Event object
+                ** Post-Conditions: Event object with name of char that was passed in
+                *********************************************************************/
+                Event::Event(char name) : name(name) {}
+
+                /*********************************************************************
+                ** Function: Wumpus::Wumpus()
+                ** Description: This is the default constructor for the Wumpus class and it 
+                constructs an Event object and sets the name to W so that the game can tell which 
+                Event this is when polymorphism is implemented
+                ** Parameters: NONE
+                ** Pre-Conditions: no Wumpus object
+                ** Post-Conditions: Wumpus object with a const name of 'W'
+                *********************************************************************/
+                Wumpus::Wumpus() : Event('W'){}
+            </code>
+        </pre>
+
+        <p><br>
+            This allowed me to print out the objects name irregardless of the event, for example I could just call event.name(), if the debug mode was set to true. Here's what the room and wumpus class look like, and keep in mind that all of 
+            the derived classes look about the same:
+        <br><br></p>
+
+        <pre>
+            <button id="toolbar" onclick="copyToClickBoard()">Copy</button>
+            <br>
+            <code id="copy" class="language-cpp">
+                //this is the class which represents each room in the grid
+                class Room{
+                    private:
+                        //room's position
+                        int x;
+                        int y;
+
+                        //bool which sees is if it has the player in it
+                        bool has_player;
+
+                        //event pointer which will point to a derived event object if there is an event
+                        Event* event;
+                    public:
+                        //constructor with position
+                        Room(int, int);
+
+                        //getters
+                        bool get_has_event() const;
+                        int get_x() const;
+                        int get_y() const;
+                        Event* get_event() const;
+                        bool get_has_player() const;
+
+                        //setters
+                        void set_event(Event*);
+                        void set_has_player(bool);
+                        
+                        //destructor which frees the event pointer if it's pointing to something
+                        ~Room();
+                        
+                };
+
+                //this class inherits the event and represents the wumpus
+                class Wumpus : public Event{
+                    public:
+                        //constructor
+                        Wumpus();
+
+                        //these funciton override the event virtual functions and handle walking into the 
+                        //wumpus's room
+                        std::string percept() const override;
+                        std::string encounter(Player&) const override;
+
+                        //destructor
+                        ~Wumpus();
+                };
+            </code>
+        </pre>
+
+        <p><br>
+            Overall, this project was very benificial to my understanding of Object Oriented Programming, inhereitance, and polymorphism. It has also helped me understand the power of using these tools
+            as opposed to functional programming and the conciseness and reusability of this method. It allows programmers to write more concise and clean code, which is what every programmer should 
+            strive for. I look forward to seeing more applications of this technique in the future, and i'm grateful to have another useful tool in my toolbelt.
+        <br><br></p>
+
     </article>
     <div class="github-comments">
         <p id="leave-a-comment">Comments</p>
