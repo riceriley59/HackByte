@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="post-huntthewumpus.css">
+    <link rel="stylesheet" href="../../../transitions.css">
+    <link rel="stylesheet" href="../../prism.css">
+    <title>HackByte - Posts</title>
+</head>
+<body>
+
+    <div id="transition" class="transition transition-2 is-active"></div>
+    <header id="showcase" class="">
+		<div class="int">
+            <span><i>Hack Byte</i>Tech Blog</span>
+        </div>
+        <ul id='showcaselist' class="showcaselist">
+            <li><a href="../../../index.html" class="select1">Home</a></li>
+            <li><a class="select2 active" href="../../posts.html">Posts</a></li>
+            <li><a class="select3" href="../../../about/about.html">About</a></li>
+            <li><a class="select4" href="../../../contact/contact.html">Contact</a></li>
+            <li><a class="select5" href="https://riley-rice.com" taget="_blank">Portfolio</a></li>
+        </ul>
+        <div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
+		</div>
+	</header>
+
+    <script>
+        const GH_API_URL = 'https://api.github.com/repos/riceriley59/CS-162/issues/1/comments';
+    
+        let request = new XMLHttpRequest();
+        request.open( 'GET', GH_API_URL, true );
+        request.onload = function() {
+            if ( this.status >= 200 && this.status < 400 ) {
+                let response = JSON.parse( this.response );
+        
+                for ( var i = 0; i < response.length; i++ ) {
+                    document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
+                }
+        
+                if ( 0 === response.length) {
+                    document.getElementById( 'no-comments-found' ).style.display = 'block';
+                }
+            } else {
+                console.error( this );
+            }
+        };
+        
+        function createCommentEl( response ) {
+            let user = document.createElement( 'a' );
+            user.setAttribute( 'href', response.user.url.replace( 'api.github.com/users', 'github.com' ) );
+            user.classList.add( 'user' );
+        
+            let userAvatar = document.createElement( 'img' );
+            userAvatar.classList.add( 'avatar' );
+            userAvatar.setAttribute( 'src', response.user.avatar_url );
+        
+            user.appendChild( userAvatar );
+        
+            let commentLink = document.createElement( 'a' );
+            commentLink.setAttribute( 'href', response.html_url );
+            commentLink.classList.add( 'comment-url' );
+            commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+
+            let commentContents = document.createElement( 'div' );
+            commentContents.classList.add( 'comment-content' );
+            commentContents.innerHTML = response.body;
+        
+            let comment = document.createElement( 'li' );
+            comment.setAttribute( 'data-created', response.created_at );
+            comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
+            comment.setAttribute( 'data-user-url', response.user.url );
+        
+            comment.appendChild( user );
+            comment.appendChild( commentContents );
+            comment.appendChild( commentLink );
+        
+            return comment;
+        }
+        request.send();
+    </script>
+    <article>
+        <h1>Hunt the Wumpus - Cave CLI Game</h1>
+        <p><br>
+            Hunt the Wumpus is a cave CLI game that I made for a university assignment. The concept is very simple you are in square grid, the cave, in which you get to choose the size. You have to shoot 
+            the Wumpus with an arrow, find the gold, and then escape exactly where you came in from. There is also other dangerous events in the cave such as bottomless pits and bat caves filled with bats. If 
+            you walk into the Wumpus's room or a room with a bottomless pit in it you die. If you walk into a bat cave they pick you up and move you to random room in the grid regardless if whether it's occupied 
+            by something. You have three arrows only and if you shoot all of them without hitting the wumpus you lose, and every arrow moves three rooms. Every time that you shoot an arrow there is a 75% chance 
+            that the wumpus will move to another room that doesn't have an event. This also means it can move to the room your currently in still. Normally when playing the game you don't know where the objects are 
+            but when you get near them you'll see an output message for each event one move away from you, and this can help you decide and even figure out where the events are. Although, for testing purposes I implemented 
+            a debug mode in which you can see where the player and all the events are in the grid. The grid will looking something like this:<br><br>
+
+            <img src="../../../images/huntthewumpus.png" height="40%" width="75%" object-fit="cover"></img><br><br>
+
+            It's a very simple game, but looking at it from a design perspective there can be quite a bit of different aspects to account for. You can start to realize that the project would be a lot simpler 
+            if we used objects and polymorphism over functional programming, and conveniently this assignment required the use of that. This is because if you look at the requirements for each of the different events 
+            in the grid they all need to be able to output an event specific message when you are near them and an event specific action when the player moves into the event's room. Since their requirements are extremely similiar
+            we can make an abstract class with two purely virtual functions which handle those two requirements and requires each event class, which will derive this abstract class, to implement their own specific version of 
+            these functions. Doing it this way will reduce a lot of the code we have to write and reuse. The event class will look something like this: <br><br><br>
+        <br><br></p>
+        
+        <pre>
+            <button id="toolbar" onclick="copyToClickBoard()">Copy</button>
+            <br>
+            <code id="copy" class="language-cpp">
+                //this is the abstract or interface class for the events in the game
+                class Event{
+                protected:
+                    //event type identifier
+                    char const name;
+                public:
+                    //allow child classes to call constructor with specfic name to identify type
+                    //of event
+                    Event();
+                    Event(char);
+
+                    //pure virtual funcitons
+                    virtual std::string percept() const = 0;
+                    virtual std::string encounter(Player&) const = 0;
+
+                    //this is the getter which gets the name or type of the inherited class
+                    char get_name() const;
+
+                    //virtual destructor so the derived destructors are called
+                    virtual ~Event() = default;
+                };
+            </code>
+        </pre>
+
+        <p><br>
+            Additionally, this will also make adding events to rooms a lot easier. When implementing the grid I created a 2D vector of room objects which has different variables and methods to make the implementation easier.
+            Within each of these room objects I added an empty event pointer to each one. <br>
+        <br><br></p>
+    </article>
+    <div class="github-comments">
+        <p id="leave-a-comment">Comments</p>
+        <ul id="gh-comments-list"></ul>
+        <p id="no-comments-found">No comments found for this article.</p>
+        <p id="leave-a-comment">This will take you to Github where you can then write, and post, your comment (it will show up on the page within an hour).
+            Also you will need a Github account to comment.<br><br><button onclick="window.location.href='https://github.com/riceriley59/CS-162/issues/1';">Leave a comment</button></p>
+    </div> 
+
+    <div class="trademark"><p>Riley Rice - 2022</p></div>
+    <script src="post-huntthewumpus.js"></script>
+    <script src="../../../app.js"></script>
+    <script src="../../prism.js"></script>
+</body>
+</html>
