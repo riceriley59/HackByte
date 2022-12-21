@@ -162,6 +162,11 @@ article h1{
 	margin: 0 auto;
 }
 
+article a{
+	text-decoration: none;
+	color: #81a1c1;
+}
+
 .github-comments{
 	font-size: 18px;
 	width: 45em;
